@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Vault — A Cinematic Memory Universe</title>
+  <meta name="description" content="Memory Vault is a futuristic emotional archive — store your memories in glowing cosmic vaults among the stars." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Cosmic background layers -->
+  <div class="cosmos"></div>
+  <div class="aurora"></div>
+  <div class="fog"></div>
+  <canvas id="stars"></canvas>
+  <canvas id="dust"></canvas>
+  <canvas id="shooting"></canvas>
+
+  <!-- Cursor -->
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="brand">◈ Memory Vault</div>
+    <div class="nav-actions">
+      <button class="btn btn-ghost" id="newVaultBtn">+ New Vault</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-orb"></div>
+    <div class="floating-elements">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <h1>Memory Vault</h1>
+    <p class="hero-sub"></p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="heroCreate">Create your first vault</button>
+      <button class="btn" id="heroScroll">Explore your cosmos ↓</button>
+    </div>
+  </section>
+
+  <!-- Vaults -->
+  <section class="section" id="vaultsSection">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">
+          <small>Your archive</small>
+          Cosmic Vaults
+        </h2>
+      </div>
+      <button class="btn btn-primary" onclick="document.getElementById('newVaultBtn').click()">+ Create Vault</button>
+    </div>
+    <div class="vaults-grid" id="vaultsGrid"></div>
+  </section>
+
+  <footer class="footer">
+    Built with starlight · Memory Vault © <span id="yr"></span>
+  </footer>
+
+  <!-- Create Vault Modal -->
+  <div class="modal-backdrop" id="createModal">
+    <div class="modal">
+      <button class="close" data-close="createModal">✕</button>
+      <h2>Forge a new vault</h2>
+      <p class="lead">Lock your memories behind a password and an image of meaning.</p>
+      <form id="createForm">
+        <div class="field">
+          <label>Vault title</label>
+          <input class="input" id="vaultTitle" placeholder="e.g. Summer 2018" required maxlength="60" />
+        </div>
+        <div class="field">
+          <label>Cover image</label>
+          <div class="file-drop" id="coverDrop">
+            <p>Click to upload a vault cover</p>
+            <p style="font-size:0.78rem;opacity:0.6;margin-top:6px">PNG · JPG · WEBP</p>
+          </div>
+          <input type="file" id="coverInput" accept="image/*" hidden />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input class="input" id="vaultPwd" type="password" placeholder="Choose a secret key" required minlength="3" />
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%; margin-top:8px">Open the cosmos ✨</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Unlock Modal -->
+  <div class="modal-backdrop" id="unlockModal">
+    <div class="modal">
+      <button class="close" data-close="unlockModal">✕</button>
+      <h2>Unlock vault</h2>
+      <p class="lead">Speak the secret to step through the portal.</p>
+      <form id="unlockForm">
+        <div class="field">
+          <label>Password</label>
+          <input class="input" id="unlockPwd" type="password" required />
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%">Enter portal →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Portal Transition -->
+  <div class="portal" id="portal">
+    <div class="portal-ring"></div>
+    <div class="portal-text">Access Granted</div>
+  </div>
+
+  <!-- Music -->
+  <button class="music-toggle" id="musicBtn" title="Ambient music">♫</button>
+  <audio id="ambient" loop src="https://cdn.pixabay.com/audio/2022/10/30/audio_347f4cf2c6.mp3"></audio>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vault — Memory Vault</title>
+  <link rel="stylesheet" href="/vault.css" />
+</head>
+<body>
+  <div class="cosmos"></div>
+  <div class="aurora"></div>
+  <div class="fog"></div>
+  <canvas id="stars"></canvas>
+  <canvas id="dust"></canvas>
+
+  <div class="cursor-ring"></div>
+  <div class="cursor-dot"></div>
+
+  <nav class="nav">
+    <a class="brand" href="/app.html">◈ Memory Vault</a>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="/app.html">← All vaults</a>
+    </div>
+  </nav>
+
+  <header class="vault-hero">
+    <div class="vault-hero-cover"><img id="vaultCoverImg" alt="" /></div>
+    <div class="crumb">◈ Vault · <span id="vaultCount"></span></div>
+    <h1 class="vault-page-title" id="vaultName">Vault</h1>
+    <p class="vault-page-sub">Every image is a tiny universe of feeling.</p>
+  </header>
+
+  <div class="controls">
+    <div class="search"><input id="searchInput" placeholder="Search memories…" /></div>
+    <select id="moodFilter" class="select" style="max-width:220px"></select>
+  </div>
+
+  <main class="timeline" id="timeline"></main>
+
+  <!-- Add Memory Modal -->
+  <div class="modal-backdrop" id="addModal">
+    <div class="modal">
+      <button class="close" data-close="addModal">✕</button>
+      <h2>Archive a memory</h2>
+      <p class="lead">Capture this moment among the stars.</p>
+      <form id="addForm">
+        <div class="field">
+          <label>Image</label>
+          <div class="file-drop" id="memDrop"><p>Click to upload an image</p></div>
+          <input type="file" id="memImage" accept="image/*" hidden />
+        </div>
+        <div class="field">
+          <label>Caption</label>
+          <textarea class="textarea" id="memCaption" placeholder="What does this memory feel like?"></textarea>
+        </div>
+        <div class="field">
+          <label>Date</label>
+          <input class="input" id="memDate" type="date" />
+        </div>
+        <div class="field">
+          <label>Mood</label>
+          <select class="select" id="moodSelect"></select>
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%">Lock it in ✨</button>
+      </form>
+    </div>
+  </div>
+
+  <button class="fab" id="addBtn" title="Add memory">+</button>
+  <button class="music-toggle" id="musicBtn" title="Ambient music">♫</button>
+  <audio id="ambient" loop src="https://cdn.pixabay.com/audio/2022/10/30/audio_347f4cf2c6.mp3"></audio>
+
+  <script src="/vault.js"></script>
+</body>
+</html>
